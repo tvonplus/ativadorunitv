@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gerador Código 6 Dígitos</title>
+
+<style>
+body{
+    background:#202020;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding-top:50px;
+}
+
+input{
+    font-size:30px;
+    width:150px;
+    text-align:center;
+    padding:10px;
+}
+
+button{
+    font-size:22px;
+    padding:10px 30px;
+    margin-top:20px;
+}
+
+#resultado{
+    margin-top:40px;
+    font-size:50px;
+    color:#00ff66;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Gerado</h2>
+
+<input id="entrada" maxlength="4" placeholder="1234">
+
+<br>
+
+<button onclick="gerar()">Gerar</button>
+
+<div id="resultado"></div>
+
+
+<script>
+
+function gerar(){
+
+    let n = parseInt(document.getElementById("entrada").value);
+
+    if(isNaN(n)){
+        alert("Digite 4 números");
+        return;
+    }
+
+
+    // Chave interna
+    const chave = 918273645;
+
+
+    // Mistura dos valores
+    n = n * 7919;
+
+    n += chave;
+
+    n ^= 0x5A5A;
+
+    n *= 97;
+
+    n += 654321;
+
+    n ^= (chave >> 8);
+
+    n *= 37;
+
+    n += 123456;
+
+    n ^= 0xA3F2;
+
+    n *= 43;
+
+
+    // garante positivo
+    n = Math.abs(n);
+
+
+    // transforma em 6 dígitos
+    let codigo = (n % 1000000)
+        .toString()
+        .padStart(6,"0");
+
+
+    document.getElementById("resultado").innerHTML = codigo;
+
+}
+
+</script>
+
+</body>
+</html>
