@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -15,52 +16,68 @@
             height: 100vh;
             margin: 0;
         }
+
         .box {
             background: #1f2937;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0,0,0,.5);
-            max-width: 350px;
+            box-shadow: 0 0 10px rgba(0,0,0,.5);
+            max-width: 175px;
             width: 90%;
         }
-        h2 { color: #3b82f6; margin-top: 0; }
+
+        h2 {
+            color: #3b82f6;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 8px 0;
+        }
+
         input[type="number"] {
             width: 80%;
-            padding: 12px;
-            font-size: 22px;
+            padding: 6px;
+            font-size: 16px;
             text-align: center;
-            border-radius: 8px;
-            border: 2px solid #374151;
+            border-radius: 4px;
+            border: 1px solid #374151;
             background: #111827;
             color: #fff;
-            margin: 15px 0;
+            margin: 8px 0;
+            box-sizing: border-box;
         }
+
         button {
             background: #2563eb;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 18px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             width: 90%;
         }
+
         .resultado {
-            margin-top: 20px;
-            font-size: 18px;
+            margin-top: 10px;
+            font-size: 12px;
             color: #d1d5db;
         }
+
         .senha-gerada {
-            font-size: 40px;
+            font-size: 20px;
             font-weight: bold;
             color: #22c55e;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             background: #111827;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
+            padding: 5px;
+            border-radius: 4px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -68,9 +85,16 @@
 
 <div class="box">
     <h2>Painel do Administrador</h2>
+
     <p>Digite o código que aparece na TV do cliente:</p>
-    
-    <input type="number" id="codigoTV" placeholder="Ex: 7482" maxlength="4">
+
+    <input
+        type="number"
+        id="codigoTV"
+        placeholder="Ex: 7482"
+        maxlength="4"
+    >
+
     <button onclick="gerarResposta()">⚡ Gerar Senha</button>
 
     <div class="resultado" id="areaResultado" style="display:none;">
@@ -84,7 +108,9 @@
     const CHAVE_SECRETA = 3579;
 
     function gerarResposta() {
-        const codigoTV = parseInt(document.getElementById('codigoTV').value);
+        const codigoTV = parseInt(
+            document.getElementById('codigoTV').value
+        );
 
         if (!codigoTV || codigoTV < 1000 || codigoTV > 9999) {
             alert("Digite um código válido de 4 dígitos!");
@@ -95,10 +121,13 @@
         const resposta = (codigoTV * 3 + CHAVE_SECRETA) % 10000;
         const respostaFormatada = String(resposta).padStart(4, '0');
 
-        document.getElementById('senhaCalculada').innerText = respostaFormatada;
+        document.getElementById('senhaCalculada').innerText =
+            respostaFormatada;
+
         document.getElementById('areaResultado').style.display = 'block';
     }
 </script>
 
 </body>
 </html>
+```
